@@ -19,13 +19,13 @@
 
     <kie.dockerui.privateHost>docker-host.mycompany.org</kie.dockerui.privateHost>
     <kie.dockerui.publicHost>public-docker-host.mycompany.org</kie.dockerui.publicHost>
-    <kie.dockerui.artifactsPath>/home/docker/kie-artifacts</kie.dockerui.artifactsPath>
-    <kie.dockerui.jenkinsURL>https://kie-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/</kie.dockerui.jenkinsURL>
+    <kie.dockerui.artifactsPath>/home/jenkins/kie-artifacts</kie.dockerui.artifactsPath>
+    <kie.dockerui.jenkinsURL>https://rhba-jenkins.rhev-ci-vms.eng.rdu2.redhat.com//</kie.dockerui.jenkinsURL>
     <!-- Configurable properties for the build. -->
     <docker.daemon.rest.url>http://localhost:2375</docker.daemon.rest.url>
     <docker.registry>localhost:5000</docker.registry>
     <docker.kie.ui.version>1.0.2</docker.kie.ui.version>
-    <kie.artifacts.deploy.path>/home/docker/kie-artifacts</kie.artifacts.deploy.path>
+    <kie.artifacts.deploy.path>/home/jenkins/kie-artifacts</kie.artifacts.deploy.path>
     <docker.run.timeout>60000</docker.run.timeout>
   </properties>
 
@@ -35,7 +35,7 @@
       <groupId>org.kie.docker</groupId>
       <artifactId>kie-docker-ui-webapp</artifactId>
       <type>war</type>
-      <classifier>wildfly14</classifier>
+      <classifier>wildfly19</classifier>
       <exclusions>
         <exclusion>
           <groupId>*</groupId>
@@ -54,7 +54,7 @@
         <configuration>
           <!-- Global configuration. -->
           <dockerHost>${docker.daemon.rest.url}</dockerHost>
-          <!--<registry>${docker.registry}</registry>-->
+          <registry>${docker.registry}</registry>
           <!-- Although no authentication on registry, set empty values. If not, plugin push goal fails. -->
           <authConfig>
             <username/>
@@ -74,7 +74,7 @@
                 </tags>
                 <dockerFileDir>${project.basedir}/src/main/docker/kie-docker-ui</dockerFileDir>
                 <assembly>
-                  <descriptor>${project.basedir}/src/main/assembly/assembly-kie-docker-ui-wildfly14.xml</descriptor>
+                  <descriptor>${project.basedir}/src/main/assembly/assembly-kie-docker-ui-wildfly19.xml</descriptor>
                 </assembly>
               </build>
               <run>

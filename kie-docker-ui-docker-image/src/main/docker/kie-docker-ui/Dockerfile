@@ -1,5 +1,5 @@
 ####### BASE ############
-FROM jboss/wildfly:14.0.1.Final
+FROM jboss/wildfly:19.1.0.Final
 
 ####### MAINTAINER ############
 MAINTAINER "Michael Biarnés Kiefer" "mbiarnes@redhat.com"
@@ -7,8 +7,8 @@ MAINTAINER "Michael Biarnés Kiefer" "mbiarnes@redhat.com"
 ####### ENVIRONMENT ############
 ENV JAVA_OPTS -Xmx1g -Djava.security.egd=file:/dev/urandom
 ENV KIE_DOCKER_SERVER_PRIVATE 172.17.42.1
-ENV KIE_DOCKER_SERVER_PUBLIC kieci-02.lab.eng.brq.redhat.com
-ENV KIE_DOCKER_JENKINS_URL https://kie-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/Docker/
+ENV KIE_DOCKER_SERVER_PUBLIC kie-docker-ui.usersys.redhat.com
+ENV KIE_DOCKER_JENKINS_URL https://rhba-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/KIE/job/kie-tools/job/docker-ui-build/
 
 ####### WEBAPP ############
 ADD maven/kie-docker-ui-webapp.war $JBOSS_HOME/standalone/deployments/
